@@ -16,10 +16,12 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ConfigApi {
-    public static final String baseUrlE = "http://10.0.2.2:8089/Proyecto_Ecommer_Backend_war";
-    //public static final String baseUrlE = "http://localhost:8089/Proyecto_Ecommer_Backend_war";
+    //public static final String baseUrlE = "http://10.0.2.2:8089/Proyecto_Ecommer_Backend_war";
+    public static final String baseUrlE = "http://localhost:8089/Proyecto_Ecommer_Backend_war";
     private static Retrofit retrofit;
     private static String token = "";
+
+    private static IUsuarioApi usuarioApi;
 
     static {
         initClient();
@@ -56,6 +58,13 @@ public class ConfigApi {
     public static void setToken(String value) {
         token = value;
         initClient();
+    }
+
+    public static IUsuarioApi getUsuarioApi(){
+        if(usuarioApi == null){
+            usuarioApi = retrofit.create(IUsuarioApi.class);
+        }
+        return usuarioApi;
     }
 
 }
