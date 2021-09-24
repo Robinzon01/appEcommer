@@ -21,7 +21,7 @@ public class TapusuPvenRepository {
     }
 
     public static TapusuPvenRepository getInstance(){
-        if (repository == null){
+        if ( repository == null){
             repository = new TapusuPvenRepository();
         }
         return repository;
